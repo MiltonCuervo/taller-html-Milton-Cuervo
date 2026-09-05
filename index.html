@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty - Buscador de Personajes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado principal -->
+    <header>
+        <h1>Rick and Morty</h1>
+        <p>Buscador de Personajes</p>
+    </header>
+
+    <main>
+
+        <!-- Instrucciones de uso -->
+        <section id="instrucciones">
+            <p>Busca un personaje de Rick and Morty por nombre y explora su información.</p>
+        </section>
+
+        <!-- Sección de búsqueda -->
+        <section id="buscador">
+            <input type="text" id="campo-busqueda" placeholder="Buscar personaje...">
+            <button id="btn-buscar">Buscar</button>
+            <button id="btn-limpiar">Limpiar</button>
+        </section>
+
+        <!-- Mensajes de retroalimentación -->
+        <div id="mensaje"></div>
+
+        <!-- Indicador de carga -->
+        <div id="cargando" class="oculto">
+            <div class="spinner"></div>
+            <p>Cargando personajes...</p>
+        </div>
+
+        <!-- Estadísticas de los resultados -->
+        <div id="estadisticas" class="oculto">
+            <div class="stat-item">
+                <span class="stat-numero" id="stat-total">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero" id="stat-vivos">0</span>
+                <span class="stat-label">Vivos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero" id="stat-muertos">0</span>
+                <span class="stat-label">Muertos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero" id="stat-desconocido">0</span>
+                <span class="stat-label">Desconocido</span>
+            </div>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div id="contador-resultados" class="oculto"></div>
+
+        <!-- Contenedor de tarjetas de personajes -->
+        <div id="resultados"></div>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Desarrollado con la API de Rick and Morty</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
