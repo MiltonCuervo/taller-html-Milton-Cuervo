@@ -12,11 +12,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* =============================================
+   TEMA CLARO (POR DEFECTO)
+   ============================================= */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
     color: #2c3e50;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* =============================================
@@ -27,18 +32,55 @@ header {
     background: linear-gradient(135deg, #1a5276, #27ae60);
     color: white;
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 20px;
+    position: relative;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.header-contenido {
+    position: relative;
+    z-index: 1;
 }
 
-header p {
-    font-size: 1.2rem;
+.logo {
+    max-width: 350px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+.subtitulo {
+    font-size: 1.3rem;
     opacity: 0.9;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* Botón de tema */
+.btn-tema {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-tema:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 /* =============================================
@@ -81,6 +123,10 @@ header p {
     width: 320px;
     outline: none;
     transition: 0.3s;
+}
+
+#campo-busqueda::placeholder {
+    color: #999;
 }
 
 #campo-busqueda:focus {
@@ -333,12 +379,161 @@ footer {
 }
 
 /* =============================================
+   MODO OSCURO
+   ============================================= */
+
+body.modo-oscuro {
+    background-color: #0a0a1a;
+    background-image:
+        radial-gradient(ellipse at top, rgba(0, 200, 150, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(100, 0, 200, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: #e0e0e0;
+}
+
+body.modo-oscuro header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 3px solid #39ff14;
+}
+
+body.modo-oscuro .btn-tema {
+    background: rgba(57, 255, 20, 0.2);
+    border-color: #39ff14;
+}
+
+body.modo-oscuro .btn-tema:hover {
+    background: rgba(57, 255, 20, 0.4);
+}
+
+body.modo-oscuro .subtitulo {
+    color: #39ff14;
+}
+
+body.modo-oscuro #instrucciones {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: #39ff14;
+}
+
+body.modo-oscuro #instrucciones p {
+    color: #b0b0b0;
+}
+
+body.modo-oscuro #campo-busqueda {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #39ff14;
+    color: white;
+}
+
+body.modo-oscuro #campo-busqueda::placeholder {
+    color: #888;
+}
+
+body.modo-oscuro #campo-busqueda:focus {
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+}
+
+body.modo-oscuro #btn-buscar {
+    background-color: #39ff14;
+    color: #0d1117;
+}
+
+body.modo-oscuro #btn-buscar:hover {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+}
+
+body.modo-oscuro #btn-limpiar {
+    background-color: transparent;
+    color: #39ff14;
+    border: 2px solid #39ff14;
+}
+
+body.modo-oscuro #btn-limpiar:hover {
+    background-color: #39ff14;
+    color: #0d1117;
+}
+
+body.modo-oscuro .mensaje-error {
+    color: #ff5252;
+}
+
+body.modo-oscuro .mensaje-info {
+    color: #39ff14;
+}
+
+body.modo-oscuro .spinner {
+    border-color: rgba(57, 255, 20, 0.2);
+    border-top-color: #39ff14;
+}
+
+body.modo-oscuro #cargando p {
+    color: #888;
+}
+
+body.modo-oscuro .stat-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+body.modo-oscuro .stat-numero {
+    color: #39ff14;
+}
+
+body.modo-oscuro .stat-label {
+    color: #888;
+}
+
+body.modo-oscuro #contador-resultados {
+    color: #39ff14;
+}
+
+body.modo-oscuro .card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+body.modo-oscuro .card:hover {
+    box-shadow: 0 8px 30px rgba(57, 255, 20, 0.2);
+    border-color: #39ff14;
+}
+
+body.modo-oscuro .card-contenido h3 {
+    color: #ffffff;
+}
+
+body.modo-oscuro .card-contenido .especie {
+    color: #39ff14;
+}
+
+body.modo-oscuro .card-contenido .origen {
+    color: #aaa;
+}
+
+body.modo-oscuro .badge-alive {
+    background-color: #39ff14;
+    color: #0d1117;
+}
+
+body.modo-oscuro .badge-unknown {
+    background-color: #666;
+}
+
+body.modo-oscuro footer {
+    background-color: #0d1117;
+    border-top: 2px solid #39ff14;
+    color: #39ff14;
+}
+
+/* =============================================
    RESPONSIVE - TABLET
    ============================================= */
 
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+    .logo {
+        max-width: 250px;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
     }
 
     .card {
@@ -370,12 +565,13 @@ footer {
    ============================================= */
 
 @media (max-width: 480px) {
-    header h1 {
-        font-size: 1.6rem;
+    .logo {
+        max-width: 180px;
     }
 
-    header p {
-        font-size: 1rem;
+    .subtitulo {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
     }
 
     .card {
@@ -389,5 +585,11 @@ footer {
 
     .stat-item {
         width: 80%;
+    }
+
+    .btn-tema {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
     }
 }

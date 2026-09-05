@@ -6,6 +6,7 @@ var API_URL = "https://rickandmortyapi.com/api/character";
 var campoBusqueda = document.getElementById("campo-busqueda");
 var btnBuscar = document.getElementById("btn-buscar");
 var btnLimpiar = document.getElementById("btn-limpiar");
+var btnTema = document.getElementById("btn-tema");
 var contenedorResultados = document.getElementById("resultados");
 var contenedorMensaje = document.getElementById("mensaje");
 var contenedorCargando = document.getElementById("cargando");
@@ -224,5 +225,35 @@ campoBusqueda.addEventListener("keydown", function(evento) {
 
 btnLimpiar.addEventListener("click", limpiarBusqueda);
 
+// =============================================
+// Modo claro / oscuro
+// =============================================
+
+function cambiarTema() {
+    document.body.classList.toggle("modo-oscuro");
+
+    // Guardar preferencia en localStorage
+    if (document.body.classList.contains("modo-oscuro")) {
+        localStorage.setItem("tema", "oscuro");
+        btnTema.textContent = "\u2600\uFE0F";
+    } else {
+        localStorage.setItem("tema", "claro");
+        btnTema.textContent = "\uD83C\uDF19";
+    }
+}
+
+// Cargar tema guardado al abrir la página
+function cargarTemaGuardado() {
+    var temaGuardado = localStorage.getItem("tema");
+    if (temaGuardado === "oscuro") {
+        document.body.classList.add("modo-oscuro");
+        btnTema.textContent = "\u2600\uFE0F";
+    }
+}
+
 // Carga inicial al abrir la página
-document.addEventListener("DOMContentLoaded", cargarPersonajesIniciales);
+document.addEventListener("DOMContentLoaded", function() {
+    cargarTemaGuardado();
+    btnTema.addEventListener("click", cambiarTema);
+    cargarPersonajesIniciales();
+});
