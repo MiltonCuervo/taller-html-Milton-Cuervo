@@ -1,0 +1,393 @@
+/* =============================================
+   RESET Y VARIABLES DE COLOR
+   ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    min-height: 100vh;
+}
+
+/* =============================================
+   ENCABEZADO
+   ============================================= */
+
+header {
+    background: linear-gradient(135deg, #1a5276, #27ae60);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* =============================================
+   SECCIÓN DE INSTRUCCIONES
+   ============================================= */
+
+#instrucciones {
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #eaf2f8;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+#instrucciones p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* =============================================
+   SECCIÓN DE BÚSQUEDA
+   ============================================= */
+
+#buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+#campo-busqueda {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #bdc3c7;
+    border-radius: 25px;
+    width: 320px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#campo-busqueda:focus {
+    border-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.4);
+}
+
+#btn-buscar,
+#btn-limpiar {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+#btn-buscar {
+    background-color: #27ae60;
+    color: white;
+}
+
+#btn-buscar:hover {
+    background-color: #219a52;
+    transform: scale(1.05);
+}
+
+#btn-limpiar {
+    background-color: #95a5a6;
+    color: white;
+}
+
+#btn-limpiar:hover {
+    background-color: #7f8c8d;
+    transform: scale(1.05);
+}
+
+/* =============================================
+   MENSAJES
+   ============================================= */
+
+#mensaje {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1rem;
+    min-height: 40px;
+}
+
+.mensaje-error {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.mensaje-info {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* =============================================
+   INDICADOR DE CARGA
+   ============================================= */
+
+#cargando {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #27ae60;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#cargando p {
+    color: #777;
+    font-size: 1rem;
+}
+
+/* =============================================
+   ESTADÍSTICAS
+   ============================================= */
+
+#estadisticas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+}
+
+.stat-numero {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* =============================================
+   CONTADOR DE RESULTADOS
+   ============================================= */
+
+#contador-resultados {
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* =============================================
+   CONTENEDOR DE RESULTADOS
+   ============================================= */
+
+#resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =============================================
+   TARJETAS DE PERSONAJES
+   ============================================= */
+
+.card {
+    width: 280px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    animation: aparecer 0.5s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-contenido {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-contenido h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.card-contenido .especie {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.card-contenido .origen {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* Badges de estado */
+.badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.badge-alive {
+    background-color: #27ae60;
+}
+
+.badge-dead {
+    background-color: #e74c3c;
+}
+
+.badge-unknown {
+    background-color: #95a5a6;
+}
+
+/* =============================================
+   ANIMACIÓN DE APARICIÓN
+   ============================================= */
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+   PIE DE PÁGINA
+   ============================================= */
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* =============================================
+   CLASE UTILITARIA
+   ============================================= */
+
+.oculto {
+    display: none;
+}
+
+/* =============================================
+   RESPONSIVE - TABLET
+   ============================================= */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    #campo-busqueda {
+        width: 100%;
+    }
+
+    #buscador {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+
+    #estadisticas {
+        gap: 10px;
+    }
+
+    .stat-item {
+        min-width: 80px;
+        padding: 10px 15px;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL
+   ============================================= */
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    #estadisticas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-item {
+        width: 80%;
+    }
+}
