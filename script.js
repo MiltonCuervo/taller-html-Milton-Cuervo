@@ -23,11 +23,9 @@ function buscarPersonajes(nombre) {
             if (respuesta.ok) {
                 return respuesta.json();
             }
-            // Si la API retorna error (404, etc.)
             return { results: [], error: true };
         })
         .catch(function(error) {
-            // Error de conexión
             return { results: [], error: true };
         });
 }
@@ -39,7 +37,6 @@ function buscarPersonajes(nombre) {
 function mostrarPersonajes(personajes) {
     contenedorResultados.innerHTML = "";
 
-    // Validar si no hay resultados
     if (!personajes || personajes.length === 0) {
         mostrarMensaje("No se encontraron resultados.", "error");
         ocultarEstadisticas();
@@ -51,7 +48,6 @@ function mostrarPersonajes(personajes) {
     for (var i = 0; i < personajes.length; i++) {
         var personaje = personajes[i];
 
-        // Determinar clase del badge según el estado
         var claseBadge = "badge-unknown";
         if (personaje.status === "Alive") {
             claseBadge = "badge-alive";
@@ -151,13 +147,11 @@ function limpiarMensaje() {
 function realizarBusqueda() {
     var valor = campoBusqueda.value.trim();
 
-    // Validar campo vacío
     if (valor === "") {
         mostrarMensaje("Por favor ingrese un nombre.", "error");
         return;
     }
 
-    // Limpiar resultados y mensajes previos
     contenedorResultados.innerHTML = "";
     limpiarMensaje();
     mostrarCargando();
@@ -166,7 +160,6 @@ function realizarBusqueda() {
         .then(function(data) {
             ocultarCargando();
 
-            // Verificar si hubo error o no hay resultados
             if (data.error || !data.results || data.results.length === 0) {
                 mostrarMensaje("No se encontraron resultados.", "error");
                 mostrarPersonajes([]);
@@ -212,7 +205,33 @@ function limpiarBusqueda() {
 }
 
 // =============================================
+// Modo claro / oscuro
+// =============================================
+
+function cambiarTema() {
+    document.body.classList.toggle("modo-oscuro");
+
+    if (document.body.classList.contains("modo-oscuro")) {
+        localStorage.setItem("tema", "oscuro");
+        btnTema.textContent = "\u2600\uFE0F";
+    } else {
+        localStorage.setItem("tema", "claro");
+        btnTema.textContent = "\uD83C\uDF19";
+    }
+}
+
+function cargarTemaGuardado() {
+    var temaGuardado = localStorage.getItem("tema");
+    if (temaGuardado === "oscuro") {
+        document.body.classList.add("modo-oscuro");
+        btnTema.textContent = "\u2600\uFE0F";
+    }
+}
+
+// =============================================
 // Eventos de la interfaz
+// El script se carga al final del body, por lo que
+// el DOM ya está disponible al ejecutarse.
 // =============================================
 
 btnBuscar.addEventListener("click", realizarBusqueda);
@@ -225,35 +244,8 @@ campoBusqueda.addEventListener("keydown", function(evento) {
 
 btnLimpiar.addEventListener("click", limpiarBusqueda);
 
-// =============================================
-// Modo claro / oscuro
-// =============================================
+btnTema.addEventListener("click", cambiarTema);
 
-function cambiarTema() {
-    document.body.classList.toggle("modo-oscuro");
-
-    // Guardar preferencia en localStorage
-    if (document.body.classList.contains("modo-oscuro")) {
-        localStorage.setItem("tema", "oscuro");
-        btnTema.textContent = "\u2600\uFE0F";
-    } else {
-        localStorage.setItem("tema", "claro");
-        btnTema.textContent = "\uD83C\uDF19";
-    }
-}
-
-// Cargar tema guardado al abrir la página
-function cargarTemaGuardado() {
-    var temaGuardado = localStorage.getItem("tema");
-    if (temaGuardado === "oscuro") {
-        document.body.classList.add("modo-oscuro");
-        btnTema.textContent = "\u2600\uFE0F";
-    }
-}
-
-// Carga inicial al abrir la página
-document.addEventListener("DOMContentLoaded", function() {
-    cargarTemaGuardado();
-    btnTema.addEventListener("click", cambiarTema);
-    cargarPersonajesIniciales();
-});
+// Carga inicial
+cargarTemaGuardado();
+cargarPersonajesIniciales();
