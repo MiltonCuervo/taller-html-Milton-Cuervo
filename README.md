@@ -7,23 +7,25 @@ Aplicación web que consume la API pública de Rick and Morty para buscar person
 ## Tecnologías utilizadas
 
 - **HTML5** - Estructura semántica
-- **CSS3** - Diseño responsive, animaciones, Flexbox
-- **JavaScript (ES6+)** - Lógica de la aplicación
+- **CSS3** - Diseño responsive, animaciones, Flexbox, modo oscuro
+- **JavaScript (ES6+)** - Lógica de la aplicación, paginación
 - **Fetch API** - Consumo de la API REST
+- **localStorage** - Guardar preferencia de tema
 
 ## Estructura del proyecto
 
 ```
 Taller_evaluativo_1/
 ├── index.html      ← Estructura HTML
-├── styles.css      ← Estilos y diseño
-├── script.js       ← Lógica y consumo de API
+├── styles.css      ← Estilos y diseño (modo claro/oscuro)
+├── script.js       ← Lógica, consumo de API y paginación
+├── logo.png        ← Logo de la serie
 └── README.md       ← Documentación
 ```
 
 ## Instrucciones de ejecución
 
-1. Copiar los cuatro archivos en una misma carpeta
+1. Copiar todos los archivos en una misma carpeta
 2. Abrir el archivo `index.html` en cualquier navegador web
 3. Alternativamente, usar Live Server en Visual Studio Code
 
@@ -38,6 +40,12 @@ No se requiere instalación de dependencias ni servidor local.
 - Validación de campos vacíos
 - Botón "Limpiar" que reinicia la vista
 
+### Paginación
+- Botón "Ver más" para cargar siguientes resultados
+- La API retorna máximo 20 personajes por página
+- Se acumulan los resultados al cargar más páginas
+- El botón desaparece cuando no hay más páginas
+
 ### Resultados
 - Tarjetas con imagen, nombre, especie, estado y origen
 - Badge de color según estado (Alive, Dead, unknown)
@@ -47,11 +55,20 @@ No se requiere instalación de dependencias ni servidor local.
 ### Indicadores
 - Loader animado mientras se carga la información
 - Contador de resultados encontrados
-- Estadísticas: total, vivos, muertos, desconocidos
+- Estadísticas dinámicas: total, vivos, muertos, desconocidos
+- Las estadísticas se actualizan al cargar más resultados
+
+### Modo claro / oscuro
+- Botón para alternar entre temas
+- Tema claro por defecto
+- Tema oscuro con estilo espacial y verde neón
+- La preferencia se guarda en localStorage
+- Transiciones suaves entre temas
 
 ### Diseño
+- Logo de la serie Rick and Morty en el encabezado
 - Diseño responsive para PC, tablet y celular
-- Colores inspirados en la serie Rick and Morty
+- Colores inspirados en la serie (verde, morado, azul)
 - Flexbox para layout flexible
 - Scroll suave activado
 
@@ -67,6 +84,7 @@ No se requiere instalación de dependencias ni servidor local.
 
 - Carga inicial: `GET https://rickandmortyapi.com/api/character`
 - Búsqueda por nombre: `GET https://rickandmortyapi.com/api/character?name=rick`
+- Página específica: `GET https://rickandmortyapi.com/api/character?name=rick&page=2`
 
 **Datos obtenidos por personaje:**
 - Imagen (`image`)
@@ -75,17 +93,32 @@ No se requiere instalación de dependencias ni servidor local.
 - Estado (`status`)
 - Origen (`origin.name`)
 
+**Estructura de respuesta:**
+```json
+{
+  "info": {
+    "count": 23,
+    "pages": 2,
+    "next": "https://rickandmortyapi.com/api/character/?page=2&name=rick",
+    "prev": null
+  },
+  "results": [...]
+}
+```
+
 **Notas:**
 - La API retorna máximo 20 personajes por página
-- Se muestran solo los primeros resultados (sin paginación)
+- Se implementa paginación con botón "Ver más"
 - Cuando no hay coincidencias la API retorna estado 404
 
 ## Capturas sugeridas
 
 1. **Página inicial** - Vista con los primeros 20 personajes cargados
 2. **Búsqueda exitosa** - Resultados al buscar un nombre
-3. **Sin resultados** - Mensaje cuando no se encuentran coincidencias
-4. **Vista móvil** - Responsive en dispositivo celular
+3. **Paginación** - Botón "Ver más" y carga de siguientes resultados
+4. **Modo oscuro** - Vista con el tema oscuro activado
+5. **Sin resultados** - Mensaje cuando no se encuentran coincidencias
+6. **Vista móvil** - Responsive en dispositivo celular
 
 ## Autor
 
