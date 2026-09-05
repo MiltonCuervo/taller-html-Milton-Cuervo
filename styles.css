@@ -263,6 +263,29 @@ header {
     color: #555;
 }
 
+/* Botón Ver más */
+#contenedor-ver-mas {
+    text-align: center;
+    padding: 20px;
+}
+
+#btn-ver-mas {
+    padding: 12px 40px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    background-color: #3498db;
+    color: white;
+}
+
+#btn-ver-mas:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
 /* =============================================
    CONTENEDOR DE RESULTADOS
    ============================================= */
@@ -523,6 +546,16 @@ body.modo-oscuro footer {
     background-color: #0d1117;
     border-top: 2px solid #39ff14;
     color: #39ff14;
+}
+
+body.modo-oscuro #btn-ver-mas {
+    background-color: #39ff14;
+    color: #0d1117;
+}
+
+body.modo-oscuro #btn-ver-mas:hover {
+    background-color: #00e676;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
 }
 
 /* =============================================
